@@ -6,7 +6,7 @@
     tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -15,23 +15,33 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/prevButton"
+                android:id="@+id/btnPrev"
                 android:layout_weight="1"
                 android:onClick="onClick"
+                android:text="&lt;&lt;"
                 />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/nextButton"
+                android:id="@+id/btnSelect"
+                android:layout_weight="1"
+                android:text="select"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnNext"
                 android:layout_weight="1"
                 android:onClick="onClick"
+                android:text=">>"
                 />
         </LinearLayout>
         <ImageSwitcher
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageSwitcher"
-            android:layout_gravity="center_horizontal">
+            android:layout_marginTop="100dp">
         </ImageSwitcher>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

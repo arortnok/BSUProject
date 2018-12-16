@@ -1,8 +1,10 @@
 package project.colouring;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -38,14 +40,18 @@ public class SelectActivity extends AppCompatActivity implements ViewSwitcher.Vi
 
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.nextButton:
+            case R.id.btnNext:
                 setPositionNext();
                 mImageSwitcher.setImageResource(mImageIds[position]);
                 break;
-            case R.id.prevButton:
+            case R.id.btnPrev:
                 setPositionPrev();
                 mImageSwitcher.setImageResource(mImageIds[position]);
                 break;
+            case R.id.btnSelect:
+                Intent selectIntent = new Intent(SelectActivity.this, MainActivity.class);
+                selectIntent.putExtra("srcId", mImageIds[position]);
+                startActivity(selectIntent);
             default:
                 break;
         }
@@ -53,17 +59,19 @@ public class SelectActivity extends AppCompatActivity implements ViewSwitcher.Vi
 
     public void setPositionNext(){
         position++;
-        if(position>mImageIds.length - 1){
+        if(position > mImageIds.length - 1){
             position = 0;
         }
     }
 
     public void setPositionPrev(){
         position--;
-        if(position<0){
+        if(position < 0){
             position = mImageIds.length - 1;
         }
     }
+
+    final String TAG = "States";
 
     @Override
     public View makeView(){
@@ -77,4 +85,33 @@ public class SelectActivity extends AppCompatActivity implements ViewSwitcher.Vi
         return  imageView;
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "SelectActivity: onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "SelectActivity: onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "SelectActivity: onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "SelectActivity: onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "SelectActivity: onDestroy()");
+    }
 }
