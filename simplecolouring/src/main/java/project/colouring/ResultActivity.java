@@ -16,10 +16,11 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         Bundle arguments = getIntent().getExtras();
-        String result = "";
+        String result = "Your answer is ";
         if (arguments != null) {
-            result += "aoao";
+            result += arguments.getString("answered").toString();
         }
+        result += "\nThe right answer is " + arguments.getString("right");
         editText = (EditText)findViewById(R.id.editTextAnswer);
         editText.setText(result);
 
@@ -42,4 +43,3 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 }
-

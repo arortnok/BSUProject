@@ -17,7 +17,7 @@ public class SelectActivity extends AppCompatActivity implements ViewSwitcher.Vi
 
     private ImageSwitcher mImageSwitcher;
     int position = 0;
-    private int[] mImageIds = {R.drawable.unnamed, R.drawable.desert, R.drawable.des2};
+    private int[] mImageIds = {R.drawable.taipei, R.drawable.paris, R.drawable.moscow, R.drawable.berlin};
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -81,7 +81,7 @@ public class SelectActivity extends AppCompatActivity implements ViewSwitcher.Vi
                 ImageSwitcher.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
         ));
-        imageView.setBackgroundColor(0xFF000000);
+        //imageView.setBackgroundColor(0xFF000000);
         return  imageView;
     }
 

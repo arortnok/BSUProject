@@ -1,5 +1,4 @@
 package project.colouring;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     Button answerButton;
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editText;
 
+    Map<String, String> idNames = new HashMap<String, String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,19 +37,24 @@ public class MainActivity extends AppCompatActivity {
         imageView.setImageResource(srcId);
 
         editText = (EditText)findViewById(R.id.editText);
+        idNames.put(Integer.toString(R.drawable.taipei), "TAIPEI");
+        idNames.put(Integer.toString(R.drawable.paris), "PARIS");
+
+        final String rightAnswer = idNames.get(srcId);
         View.OnClickListener oclBtnOk = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.btnAnswer:
                         String answer = editText.getText().toString();
-                        if (answer != null) {
+                        if (!answer.equals("")) {
                             Intent intentAnswer = new Intent(MainActivity.this, ResultActivity.class);
                             intentAnswer.putExtra("answered", answer);
+                            intentAnswer.putExtra("right", rightAnswer);
                             startActivity(intentAnswer);
                         }
                         else {
-                            editText.setText("Enter something!!!");
+                            editText.setText("Enter something!");
                         }
                         break;
                     case R.id.btnExit:
@@ -95,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "MainActivity: onDestroy()");
     }
 }
+
+
+
+
 
 
 
